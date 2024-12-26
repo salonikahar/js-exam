@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Private Result Scoreboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="loginPage" class="container mt-5">
+        <h2 class="text-center">Login</h2>
+        <form id="loginForm" class="form-control p-4">
+            <div class="mb-3">
+                <label for="loginUsername" class="form-label">Username:</label>
+                <input type="text" id="loginUsername" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="loginPassword" class="form-label">Password:</label>
+                <input type="password" id="loginPassword" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+            <button class="btn btn-secondary mt-3" onclick="showSignupPage()">Signup</button>
+        </form>
+       
+    </div>
+
+    <div id="signupPage" class="container mt-5" style="display:none;">
+        <h2 class="text-center">Signup</h2>
+        <form id="signupForm" class="form-control p-4">
+            <div class="mb-3">
+                <label for="signupUsername" class="form-label">Username:</label>
+                <input type="text" id="signupUsername" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="signupPassword" class="form-label">Password:</label>
+                <input type="password" id="signupPassword" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Signup</button>
+            <button class="btn btn-secondary mt-3" onclick="showLoginPage()">Back to Login</button>
+        </form>
+        
+    </div>
+
+    <div id="scoreboardPage" class="container mt-5" style="display:none;">
+        <h2 class="text-center">Result Scoreboard</h2>
+        <form id="resultForm" class="form-control p-4">
+            <div class="mb-3">
+                <label for="studentName" class="form-label">Student Name:</label>
+                <input type="text" id="studentName" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="subject" class="form-label">Subject:</label>
+                <input type="text" id="subject" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="score" class="form-label">Score:</label>
+                <input type="number" id="score" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="date" class="form-label">Date:</label>
+                <input type="date" id="date" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-success">Add Result</button>
+        </form>
+
+        <h3 class="mt-4">Results:</h3>
+        <div class="d-flex align-items-center mb-3">
+            <button class="btn btn-danger me-2" onclick="logout()">Logout</button>
+            <button class="btn btn-secondary me-2" onclick="sortResults('asc')">Sort by Score (Asc)</button>
+            <button class="btn btn-secondary me-2" onclick="sortResults('desc')">Sort by Score (Desc)</button>
+            <input type="text" id="searchField" class="form-control me-2" placeholder="Search by name or subject"
+                oninput="searchResults()" style="width: 300px;">
+            <select id="filterSubject" class="form-select" style="width: 200px;" onchange="filterResults()">
+                <option value="">Filter by Subject</option>
+                <option value="Math">Math</option>
+                <option value="Science">Science</option>
+                <option value="History">History</option>
+            </select>
+        </div>
+
+        <table id="resultsTable" class="text-center" >
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+                    <th>Subject</th>
+                    <th>Score</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody id="resultsList"></tbody>
+        </table>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
